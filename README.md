@@ -157,6 +157,12 @@ Default: `false`
 
 Enable debug output
 
+#### `compress`
+
+Default: `false`
+
+Compress ingest data
+
 #### `artifactName`
 
 Default: `relative-ci-artifacts` when running during `workflow_run` event

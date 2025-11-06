@@ -202,6 +202,7 @@ async function run() {
     const webpackStatsFile = core.getInput('webpackStatsFile');
     const artifactName = core.getInput('artifactName');
     const showDebug = core.getInput('debug') === 'true';
+    const compress = core.getInput('compress') === 'true';
     const {
       eventName
     } = github.context;
@@ -244,7 +245,9 @@ async function run() {
       data: webpackStats
     }]);
     // Send data to RelativeCI
-    const response = await (0, ingest_1.default)(data, params, undefined, utils_2.logger);
+    const response = await (0, ingest_1.default)(data, params, {
+      compress
+    }, utils_2.logger);
     // Output summary
     const summary = (0, utils_2.getSummary)({
       title: response?.info?.message?.txt || '',
