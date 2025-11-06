@@ -22,6 +22,7 @@ async function run() {
     const webpackStatsFile = core.getInput('webpackStatsFile');
     const artifactName = core.getInput('artifactName');
     const showDebug = core.getInput('debug') === 'true';
+    const compress = core.getInput('compress') === 'true';
 
     const { eventName } = github.context;
 
@@ -68,7 +69,7 @@ async function run() {
     const data = filterArtifacts([{ key: 'webpack.stats', data: webpackStats }]);
 
     // Send data to RelativeCI
-    const response = await ingest(data, params, undefined, logger);
+    const response = await ingest(data, params, { compress }, logger);
 
     // Output summary
     const summary = getSummary({

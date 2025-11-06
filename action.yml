@@ -23,6 +23,10 @@ inputs:
     description: 'Include commit message'
     required: false
     default: 'true'
+  compress:
+    description: 'Compress ingest data'
+    required: false,
+    default: 'false'
   debug:
     description: 'Output debug info'
     required: false,
